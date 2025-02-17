@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <title th:text="${title}">title</title>
 </head>
 <body>
+    Intro: <span th:text="${intro}"></span>
+    Description: <span th:text="${description}"></span>
+    Method: <span th:text="${method}"></span>
+    url: <span th:text="${url}"></span>
+    <h1>Tags:</h1>
+    <ul>
+        <li th:each="str : ${tags}" th:text="${str}"></li>
+    </ul>
 </body>
 </html>
