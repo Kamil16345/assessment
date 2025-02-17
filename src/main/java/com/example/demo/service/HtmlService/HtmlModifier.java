@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.service.HtmlService;
 
 public class HtmlModifier {
 
@@ -12,4 +12,3 @@ public class HtmlModifier {
         return "Edited title in file: filename2";
     }
 }
-//src/main/resources/static/js
