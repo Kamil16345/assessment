@@ -1,13 +1,13 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class JsonData {
     @JsonProperty("enableTry")
     private boolean enableTry;
@@ -17,6 +17,8 @@ public class JsonData {
     private String intro;
     @JsonProperty("description")
     private String description;
+    @JsonProperty("method")
+    private String method;
     @JsonProperty("url")
     private String url;
     @JsonProperty("tags")
