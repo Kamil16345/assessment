@@ -5,6 +5,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -12,6 +13,7 @@ import java.io.Writer;
 public class TemplateGenerator {
 
     private final TemplateEngine templateEngine;
+    private static final String OUTPUT_DIR = "C:\\thymeleaf-output";
 
     public TemplateGenerator() {
         ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
@@ -31,8 +33,16 @@ public class TemplateGenerator {
         context.setVariable("url", jsonFileData.getUrl());
         context.setVariable("tags", jsonFileData.getTags());
 
-        Writer writer = new FileWriter("C:\\thymeleaf-output\\hello-thymeleaf" + System.currentTimeMillis() + ".html");
+        checkIfOutputDirExists();
+        Writer writer = new FileWriter(OUTPUT_DIR + "\\hello-thymeleaf" + System.currentTimeMillis() + ".html");
         writer.write(templateEngine.process("template.html", context));
         writer.close();
+    }
+
+    public void checkIfOutputDirExists() {
+        File directory = new File(OUTPUT_DIR);
+        if (!directory.exists()) {
+            directory.mkdir();
+        }
     }
 }

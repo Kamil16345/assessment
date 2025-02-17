@@ -1,8 +1,9 @@
 package com.example.demo.service.JsonService;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class JsonFilesMaintainer {
     private static File[] getAllFiles() {
@@ -12,16 +13,15 @@ public class JsonFilesMaintainer {
     }
 
     public static List<File> getAllExampleMetadataFiles() {
-        File[] allFiles = getAllFiles();
-        List<File> result = new ArrayList<>();
-        for (File file : allFiles) {
-            File[] files = file.listFiles();
-            for (File nestedFile : files) {
-                if (nestedFile.getName().endsWith(".json")) {
-                    result.add(nestedFile);
-                }
-            }
-        }
-        return result;
+        return Arrays.stream(getAllFiles())
+                .flatMap(file -> Arrays.stream(file.listFiles()))
+                .filter(file -> file.getName().endsWith(".json"))
+                .collect(Collectors.toList());
+    }
+
+    public static File getFile(String filePath) {
+        ClassLoader classLoader = JsonFilesMaintainer.class.getClassLoader();
+        File jsonFile = new File(classLoader.getResource("static/codedocusamples/" + filePath).getFile());
+        return jsonFile;
     }
 }
