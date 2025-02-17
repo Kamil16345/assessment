@@ -1,0 +1,13 @@
+{
+  "title": "My Sample Title",
+  "intro": "A very very simple sample.",
+  "description": "Very long description",
+  "method": "GET",
+  "ulr": "https://mavoco.com/api/v1/user",
+  "tags": [
+      "API",
+      "open",
+      "test",
+      "REST"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "enableTry": false,
+  "title": "Browser illegally aborts ajax request",
+  "intro": "Some browsers (firefox, safari and chrome <35) abort pending ajax requests when the user starts a download. This code sample tests whether the browser is affected or not.",
+  "tags": [
+      "browserbugs",
+      "firefox",
+      "safari",
+      "chrome"
+  ]
+}
